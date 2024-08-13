@@ -1,0 +1,26 @@
+<h2>Edit Product</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="cate">Category:</label>
+    <select name="cate" id="cate">
+        {% for category in categories %}
+        <option value="{{ category.categoryname }}" {% if prod.category == category %}selected{% endif %}>
+            {{ category.categoryname }}
+        </option>
+        {% endfor %}
+    </select><br>
+
+    <label for="pname">Product Name:</label>
+    <input type="text" name="pname" id="pname" value="{{ prod.pname }}"><br>
+
+    <label for="pprice">Product Price:</label>
+    <input type="text" name="pprice" id="pprice" value="{{ prod.pprice }}"><br>
+
+    <label for="pq">Quantity:</label>
+    <input type="number" name="pq" id="pq" value="{{ prod.quantity }}"><br>
+
+    <label for="pi">Product Image:</label>
+    <input type="file" name="pi" id="pi"><br>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
